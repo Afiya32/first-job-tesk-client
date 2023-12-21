@@ -31,7 +31,7 @@ const SignUp = () => {
       
     .then(()=>{
       toast.success('user created successfully')
-        navigate('/')
+        navigate('/dashboard')
     }
   
     )})

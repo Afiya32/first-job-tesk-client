@@ -10,6 +10,7 @@ import DashBoard from "../Pages/DashBoard";
 import SignUp from "../Pages/SignUp";
 import Login from "../Pages/Login";
 import Error from "../Pages/Error";
+import PrivateRoute from "../Pages/PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ import Error from "../Pages/Error";
       ]
     },{
         path:'/dashboard',
-        element:<DashBoard/>
+        element:<PrivateRoute><DashBoard/></PrivateRoute>
     },{
         path:'/signup',
         element:<SignUp/>

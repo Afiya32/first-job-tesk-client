@@ -16,7 +16,7 @@ const Login = () => {
               media()
               .then(res=>{console.log(res.user)
                 toast.success('user login successfully')
-                    navigate('/')
+                    navigate('/dashboard')
                   }
                 )
               .catch(err=>{
@@ -40,7 +40,7 @@ const Login = () => {
             login(email, password)
           .then(res=>{console.log(res.user)
             toast.success('user login successfully')
-                navigate('/')
+                navigate('/dashboard')
               }
             )
           .catch(err=>{
