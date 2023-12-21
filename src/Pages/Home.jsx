@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo/logo-scc-removebg-preview.png"
+import Footer from "../Components/Footer";
 
 
 const Home = () => {
@@ -37,7 +38,12 @@ const Home = () => {
             </div>
           </div>
           {/* Page content here */}
-          <Outlet/>
+         <div className="min-h-[65vh]">
+         <Outlet/>
+         </div>
+          <div className="flex justify-center items-center">
+            <Footer/>
+          </div>
         </div> 
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
