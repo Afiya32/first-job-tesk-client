@@ -11,6 +11,9 @@ import SignUp from "../Pages/SignUp";
 import Login from "../Pages/Login";
 import Error from "../Pages/Error";
 import PrivateRoute from "../Pages/PrivateRoute";
+import NewTesk from "../Pages/NewTesk";
+import OldTesk from "../Pages/OldTesk";
+import Mylist from "../Pages/Mylist";
 
   const router = createBrowserRouter([
     {
@@ -31,7 +34,18 @@ import PrivateRoute from "../Pages/PrivateRoute";
       ]
     },{
         path:'/dashboard',
-        element:<PrivateRoute><DashBoard/></PrivateRoute>
+        element:<PrivateRoute><DashBoard/></PrivateRoute>,
+        children:[{
+            path:'new',
+            element:<NewTesk/>
+
+        },{
+            path:'old',
+            element:<OldTesk/>
+        },{
+            index:true,
+            element:<Mylist/>
+        }]
     },{
         path:'/signup',
         element:<SignUp/>

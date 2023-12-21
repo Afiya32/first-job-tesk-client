@@ -20,7 +20,7 @@ const Home = () => {
             </div> 
             <div className="flex-1   px-2 mx-2">
                 <img src={logo} className="w-16 h-16" alt="" />
-                <h1 className="font-bold">Tesk Management</h1>
+                <h1 className="font-bold"> Technovision Inc.</h1>
             </div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
