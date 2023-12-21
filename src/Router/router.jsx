@@ -7,11 +7,15 @@ import HomeComponent from "../Components/HomeComponent";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import DashBoard from "../Pages/DashBoard";
+import SignUp from "../Pages/SignUp";
+import Login from "../Pages/Login";
+import Error from "../Pages/Error";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home/>,
+      errorElement:<Error/>,
       children:[
         {
             path:"/",
@@ -27,6 +31,12 @@ import DashBoard from "../Pages/DashBoard";
     },{
         path:'/dashboard',
         element:<DashBoard/>
+    },{
+        path:'/signup',
+        element:<SignUp/>
+    },{
+        path:'/login',
+        element:<Login/>
     }
   ]);
 

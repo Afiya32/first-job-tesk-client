@@ -1,11 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo/logo-scc-removebg-preview.png"
 import Footer from "../Components/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Home = () => {
+    const { user, logout } = useContext(AuthContext);
     return (
-        <div className="drawer">
+        <div className="drawer mt-2">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
@@ -31,9 +34,48 @@ const Home = () => {
               <NavLink   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "p-2 text-red-800 underline  font-bold" : "font-bold p-2"
   } to='/contact'>Contact</NavLink>
-              <NavLink   className={({ isActive, isPending }) =>
+             <div>
+                  {
+                    user?.email ?
+                      (<div className="flex w-2/3 gap-5 mx-auto justify-center items-center ">
+                        <div className="flex justify-center items-center ">
+                          <div>
+                            <NavLink to='/dashboard'className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "p-2 text-red-800 underline  font-bold" : "font-bold p-2"
-  } to='/dashboard'>Dashboard</NavLink>
+  }>DashBoard</NavLink>
+                          </div>
+                          <div className="flex w-72 justify-center items-center">
+                            <div className="font-bold">
+                              <h1>
+                                {user.displayName}
+                              </h1>
+                            </div>
+                            <div className="  justify-center items-center  flex flex-col">
+                              <div className="avatar">
+                                <div className="w-10 rounded-full">
+                                  <img src={user.photoURL} />
+                                </div>
+                              </div>
+                            </div>
+
+
+                          </div>
+
+
+                        </div>
+                        <div className="w-72">
+                          <button onClick={logout} className="btn  btn-outline btn-error"> Log-out</button>
+
+                        </div>
+                      </div>)
+                      :
+                      (<div>
+                        <NavLink to="/signup">
+                          <button className="btn btn-outline btn-success">Sign-up</button>
+                        </NavLink>
+                      </div>)
+                  }
+                </div>
               </ul>
             </div>
           </div>
@@ -41,7 +83,7 @@ const Home = () => {
          <div className="min-h-[65vh]">
          <Outlet/>
          </div>
-          <div className="flex justify-center items-center">
+          <div className="text-center mt-2">
             <Footer/>
           </div>
         </div> 
@@ -58,9 +100,49 @@ const Home = () => {
               <NavLink   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "p-2 text-red-800 underline  font-bold" : "font-bold p-2"
   } to='/contact'>Contact</NavLink>
-              <NavLink   className={({ isActive, isPending }) =>
+                 <div>
+              {
+                user?.email ? (
+                  <div>
+                    <div className="mt-5">
+                      <NavLink to='/dashboard' className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "p-2 text-red-800 underline  font-bold" : "font-bold p-2"
-  } to='/dashboard'>Dashboard</NavLink>
+  }>DashBoard</NavLink>
+
+                    </div>
+                    <div className="mt-5">
+                      <div className="avatar">
+                        <div className="w-10 rounded-full">
+                          <img src={user.photoURL} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-5">
+                      <h1>
+                        {user.displayName}
+                      </h1>
+                    </div>
+                    <div className="m-5">
+                      <button onClick={logout} className="btn  btn-outline btn-error"> Log-out</button>
+
+                    </div>
+
+
+                  </div>
+
+
+
+
+
+                )
+                  :
+                  (<div className="m-24">
+                    <NavLink to="/signup">
+                      <button className="btn btn-outline btn-success">Sign-up</button>
+                    </NavLink>
+                  </div>)
+              }
+            </div>
           </ul>
         </div>
       </div>
